@@ -1,0 +1,41 @@
+$(document).ready(function(){
+	var btn	= $('nav li'); // 위의 메뉴들을 변수 btn으로
+
+	btn.click(function(){
+		var btn_num = $(this).index();			//클릭한 li가 몇번째 인지 찾아서 변수에 넣어준다. (0부터)
+		console.log('지금 클릭한 버튼은? ' + btn_num);
+
+		btn.find('a').removeClass('on');						//모든 li안의 a에 클라스를 없애준다
+		btn.eq(btn_num).find('a').addClass('on');   //클릭한 li안의 a에 클라스를 넣어준다
+
+	});  //btn.click END
+
+	//갤러리 소트
+		$('.thumb').isotope({
+			  // options
+			  itemSelector: '.grid-item',
+			  layoutMode: 'fitRows'
+		});
+
+		var btn1 = $('nav ul li:nth-child(1)');
+		var btn2 = $('nav ul li:nth-child(2)');
+	
+
+		btn1.click(function(){
+			$('.thumb').isotope({ filter:'.all'});
+		});
+		btn2.click(function(){
+			$('.thumb').isotope({ filter:'.app'});
+		});
+
+
+
+
+//fancyBox gallery
+$('.thumb a').fancybox({
+   transitionEffect: "tube",
+	   loop: true,
+});
+
+
+  });
